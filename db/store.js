@@ -1,7 +1,7 @@
 const util = require('util');
 const fs = require('fs'); 
 
-const { uuid } = require('uuidv4');
+const { v4:uuid } = require('uuid');
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -47,4 +47,4 @@ addNote(note) {
   }
 }
 
-export default new Store();
+module.exports = new Store();

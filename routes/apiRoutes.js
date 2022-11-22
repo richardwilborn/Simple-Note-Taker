@@ -8,7 +8,7 @@ router.get('/notes', (req, res) => {
       return res.json(notes);
     })
     .catch((err) => res.status(500).json(err));
-});n
+});
 
 router.post('/notes', (req, res) => {
   store
