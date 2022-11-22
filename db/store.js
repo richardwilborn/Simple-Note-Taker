@@ -12,6 +12,19 @@ class Store {
     return writeFileAsync('db/db.json', JSON.stringify(note));
 }
 
+getNotes() {
+  return this.read().then((notes) => {
+    let parsedNotes;
+    try {
+      parsedNotes = JSON.parse(notes);
+    } catch (err) {
+      parsedNotes = [];
+    }
+    
+    return parsedNotes;
+  });
+}
+
 addNote(note) {
   const { title, text } = note;
   if (!title || !text) {
@@ -21,3 +34,5 @@ addNote(note) {
 
   }
 }
+
+module.exports = new Store();
