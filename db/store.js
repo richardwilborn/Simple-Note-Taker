@@ -1,7 +1,7 @@
 const util = require('util');
 const fs = require('fs'); 
 
-const uuidv4 = require('uuidv4');
+const { uuid } = require('uuidv4');
 
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
@@ -33,7 +33,7 @@ addNote(note) {
   if (!title || !text) {
     throw new Error("Note 'title' and 'text' cannot be empty");
   }
-  const newNote = { title, text, id: uuidv4() };
+  const newNote = { title, text, id: uuid() };
   
   return this.getNotes()
     .then((notes) => [...notes, newNote])
